@@ -4,10 +4,10 @@ import {Http, Headers} from '@angular/http';
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   acceptCredential(username: string, password: string) {
-    const url = 'http://localhost:8180/login';
+    const url = 'http://localhost:8000/login';
     const encodeCredentials = btoa(username+':'+password);
     const basicHeader = 'Basic '+encodeCredentials;
     const headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': basicHeader});
@@ -15,13 +15,13 @@ export class LoginService {
   }
 
   checkSession() {
-    const url = 'http://localhost:8180/checkSession';
+    const url = 'http://localhost:8000/checkSession';
     const headers = new Headers({'x-auth-token': localStorage.getItem('xAuthToken')});
     return this.http.get(url, {headers: headers});
   }
 
   logout() {
-    const url = 'http://localhost:8180/toLogout';
+    const url = 'http://localhost:8000/toLogout';
     const headers = new Headers({'x-auth-token': localStorage.getItem('xAuthToken')});
     return this.http.post(url, '', {headers: headers});
   }

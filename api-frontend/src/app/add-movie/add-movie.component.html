@@ -1,42 +1,42 @@
 <div class="container">
-  <span [hidden]="!isLoggedin"> 
+  <!-- <span [hidden]="!isLoggedin">  -->
     <div class="row justify-content-md-center">
       <div class="col-md-6 col-md-offset-4">
           <h2 class="">New Movie</h2>
-        <form (ngSubmit)="onAddNewComputer()" enctype="multipart/form-data">
+        <form (ngSubmit)="onAddNewMovie()" enctype="multipart/form-data">
             <div class="row">
               <div class="col-sm-6 form-group">
                 <label>Title</label>
-                <input name="make" type="text" required [(ngModel)]="newComputer.make" placeholder="Make..." class="form-control">
+                <input name="title" type="text" required [(ngModel)]="newMovie.title" placeholder="Title..." class="form-control">
               </div>
               <div class="col-sm-6 form-group">
                 <label>Director</label>
-                <input name="model" type="text" [(ngModel)]="newComputer.model" name="model" placeholder="Model..." class="form-control">
+                <input name="director" type="text" [(ngModel)]="newMovie.director" name="director" placeholder="Director..." class="form-control">
               </div>
               <div class="col-sm-6 form-group">
                 <label>Genre</label>
-                <input name="make" type="text" [(ngModel)]="newComputer.hardDrive" placeholder="Hard drive..." class="form-control">
+                <input name="genre" type="text" [(ngModel)]="newMovie.genre" placeholder="Genre..." class="form-control">
               </div>
               <div class="col-sm-6 form-group">
                 <label>Release Date</label>
-                <input name="model" type="date" [(ngModel)]="newComputer.operatingSystem" name="model" placeholder="Enter Last Name Here.." class="form-control">
+                <input name="releaseDate" type="date" [(ngModel)]="newMovie.releaseDate" name="realeaseDate" placeholder="realease date.." class="form-control">
               </div>
             </div>            
          <div class="form-group">
                 <label>Movie Poster</label>
-                <input type="file" (change)="uploadImageService.fileChangeEvent($event)" placeholder="Computer image..." required
+                <input type="file" (change)="uploadImageService.fileChangeEvent($event)" placeholder="Movie poster..." required
                   class="form-control">
               </div>
             <div class="form-group">
               <label>Plot</label>
-              <textarea name="description" placeholder="Description..." rows="3" [(ngModel)]="newComputer.description" class="form-control"></textarea>
+              <textarea name="description" placeholder="Plot..." rows="3" [(ngModel)]="newMovie.plot" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-sm btn-info">Save</button>
             <a routerLink="/home" class="btn btn-sm btn-danger pull-right">Cancel</a>
         </form>
       </div>
     </div>
-  </span>
+  <!-- </span> -->
   
   <!-- <div class="" [hidden]="isLoggedin">
     <h3>You're not logged in. Please log in first!!</h3>
