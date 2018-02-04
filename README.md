@@ -18,7 +18,7 @@ Java Compiler (JRE OR JDK) </br>
 NodeJs </br>
 Redis Server (external session storage) </br>
 Redis for Windows can be downloaded here: https://github.com/rgl/redis/downloads </br>
-Start redis Server by navigating to the redis folder, and run command: redis-server redis.windows.conf </br>
+Start redis Server by navigating to the redis folder, and run command: redis-server redis.windows.conf </br>s
 MySql database </br>
 
 
@@ -50,5 +50,9 @@ Run 'npm install' to install the node packages before starting the server with '
 
 # VISUAL
 
-![alt tag]() </br>
-![alt tag]()
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual1.PNG) </br>
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual2.PNG) </br>
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual3.PNG) </br>
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual4.PNG) </br>
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual5.PNG) </br>
+![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual6.PNG) </br>
