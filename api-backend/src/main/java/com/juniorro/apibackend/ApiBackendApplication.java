@@ -21,6 +21,10 @@ public class ApiBackendApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 		
+		/*creating some users -- when running app for the 1st time,
+		 * make sure the code below is not commented
+		 */
+		
 		/*User user1 = new User();
 		user1.setFirstName("Roland Junior");
 		user1.setLastName("Toussaint");
