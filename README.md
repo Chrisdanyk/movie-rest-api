@@ -41,6 +41,9 @@ Redis Server </br>
 
 MySql Server </br>
 Redis server (the server needs to be running before starting the application) <br>
+Configure "application.properties" file to connect to local MySQL database <br>
+Run SQL Script file to local MySQL database 
+
 
 
 

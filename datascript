@@ -1,0 +1,88 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema testdatabase
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema testdatabase
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `testdatabase` DEFAULT CHARACTER SET utf8 ;
+USE `testdatabase` ;
+
+-- -----------------------------------------------------
+-- Table `testdatabase`.`movie`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `testdatabase`.`movie` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `director` VARCHAR(255) NULL DEFAULT NULL,
+  `genre` VARCHAR(255) NULL DEFAULT NULL,
+  `plot` TEXT NULL DEFAULT NULL,
+  `release_date` DATETIME NULL DEFAULT NULL,
+  `title` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 25
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `testdatabase`.`role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `testdatabase`.`role` (
+  `role_id` INT(11) NOT NULL,
+  `name` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`role_id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `testdatabase`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `testdatabase`.`user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NULL DEFAULT NULL,
+  `enabled` BIT(1) NOT NULL,
+  `first_name` VARCHAR(255) NULL DEFAULT NULL,
+  `last_name` VARCHAR(255) NULL DEFAULT NULL,
+  `password` VARCHAR(255) NULL DEFAULT NULL,
+  `phone` VARCHAR(255) NULL DEFAULT NULL,
+  `username` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `testdatabase`.`user_role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `testdatabase`.`user_role` (
+  `user_role_id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `role_role_id` INT(11) NULL DEFAULT NULL,
+  `user_id` BIGINT(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`user_role_id`),
+  INDEX `FKotxvofgf4qtsunbe0i3vhady6` (`role_role_id` ASC),
+  INDEX `FK859n2jvi8ivhui0rl0esws6o` (`user_id` ASC),
+  CONSTRAINT `FK859n2jvi8ivhui0rl0esws6o`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `testdatabase`.`user` (`id`),
+  CONSTRAINT `FKotxvofgf4qtsunbe0i3vhady6`
+    FOREIGN KEY (`role_role_id`)
+    REFERENCES `testdatabase`.`role` (`role_id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
