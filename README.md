@@ -55,7 +55,6 @@ Run 'npm install' to install the node packages before starting the server with '
 
 ![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual1.PNG) </br>
 ![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual2.PNG) </br>
-![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual3.PNG) </br>
 ![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual4.PNG) </br>
 ![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual5.PNG) </br>
 ![alt tag](https://github.com/juniorro/movie-rest-api/blob/master/visual6.PNG) </br>
