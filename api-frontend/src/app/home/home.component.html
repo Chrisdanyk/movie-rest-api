@@ -8,10 +8,10 @@
 
  <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
   <div class="col-md-12 px-0">
-     <form>
+     <form (ngSubmit)="OnSearchBytitle()">
         <div class="form-group">
            <label for="exampleInputEmail1">Movie Search</label>
-           <input class="form-control form-control-lg" type="text" placeholder="Movie title...">
+           <input [(ngModel)]="title" name="title" class="form-control form-control-lg" type="text" placeholder="Movie title...">
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
      </form>
@@ -20,62 +20,18 @@
 
 <div class="row mb-2">
   <div class="col-12 ">
-
-   <div class="list-group">
-      <a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
+   <div *ngFor="let movie of movieList" class="list-group">      
+      <span class="list-group-item list-group-item-action flex-column align-items-start">
          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">X-MEN Origins</h5>
-            <small>Released on : December 30, 2010</small>
-            <button class="btn btn-danger">Delete</button>
+            <h3 (click)="onSelect(movie)" style="cursor: pointer;" class="mb-1"><u>{{movie.title}}</u></h3> 
+            <h6>Released on : {{movie.releaseDate | date:'fullDate'}}</h6>
+            <button (click)="openDialog(movie)" class="btn btn-danger pull-right">Delete</button>          
          </div>
-         <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-         <small>Donec id elit non mi porta.</small>
-      </a> <br>
-      <a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 justify-content-between">
-           <h5 class="mb-1">X-MEN Origins</h5>
-           <small>Released on : December 30, 2010</small>
-           <button class="btn btn-danger">Delete</button>
-        </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Donec id elit non mi porta.</small>
-     </a> <br>
-     <a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-         <h5 class="mb-1">X-MEN Origins</h5>
-         <small>Released on : December 30, 2010</small>
-         <button class="btn btn-danger">Delete</button>
-      </div>
-      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-      <small>Donec id elit non mi porta.</small>
-   </a> <br>
-   <a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-       <h5 class="mb-1">X-MEN Origins</h5>
-       <small>Released on : December 30, 2010</small>
-       <button class="btn btn-danger">Delete</button>
-    </div>
-    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small>Donec id elit non mi porta.</small>
- </a> <br>
- <a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
-     <h5 class="mb-1">X-MEN Origins</h5>
-     <small>Released on : December 30, 2010</small>
-     <button class="btn btn-danger">Delete</button>
-  </div>
-  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-  <small>Donec id elit non mi porta.</small>
-</a> <br>
-<a (click)="onSelect(movie)" style="cursor: pointer;" class="list-group-item list-group-item-action flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
-     <h5 class="mb-1">X-MEN Origins</h5>
-     <small>Released on : December 30, 2010</small>
-     <button class="btn btn-danger">Delete</button>
-  </div>
-  <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-  <small>Donec id elit non mi porta.</small>
-</a> <br>
+         <h5>Director: {{movie.director}}</h5>
+         <h5>Plot:</h5>
+         <p class="mb-1">{{movie.plot}}</p>
+        </span>
+         <br>     
    </div>
 </div>
 </div>

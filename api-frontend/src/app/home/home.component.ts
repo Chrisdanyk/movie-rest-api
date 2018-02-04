@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, NavigationExtras} from '@angular/router';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import { LoginService } from '../service/login.service';
 import { HomeService } from '../service/home.service';
 import { Movie } from '../model/movie';
+import { DeleteMovieService } from '../service/delete-movie.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +13,13 @@ import { Movie } from '../model/movie';
 })
 export class HomeComponent implements OnInit {
   private movieList: Movie[];
+  private selectedMovie: Movie;
+  private title: string;
 
   constructor(private homeService: HomeService, 
-    private longinService: LoginService, 
+    private longinService: LoginService,
+    private deleteMovieservice: DeleteMovieService,
+    public dialog:MatDialog, 
     private router: Router) {}
 
   ngOnInit() {
@@ -30,6 +36,51 @@ export class HomeComponent implements OnInit {
       );
    }
 
+   onSelect(movie: Movie){
+    this.selectedMovie = movie;
+    this.router.navigate(['/movie', this.selectedMovie.id]);
+    console.log(movie);
+  }
+
+  openDialog(movie:Movie) {
+    let dialogRef = this.dialog.open(ConfirmDeleteDialog);
+    dialogRef.afterClosed().subscribe(
+      result => {
+        console.log(result);
+        if(result=="yes") {
+          this.deleteMovieservice.deleteMovie(movie.id).subscribe(
+            res => {
+              console.log(res);
+              location.reload();
+              this.homeService.getMovieList();
+            }, 
+            error => {
+              console.log(error);
+            }
+          );
+        }
+      }
+    );
+  }
+
+  OnSearchBytitle(){
+    this.homeService.searchMovie(this.title).subscribe(
+      response =>{
+        this.movieList = response.json();
+        let navigationExtras: NavigationExtras = {
+          queryParams: {
+            "home" : this.movieList
+          }
+        };
+        this.router.navigate(['/home', navigationExtras]);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }
+
   onLogout() {
     this.longinService.logout().subscribe(
       res => {
@@ -43,4 +94,12 @@ export class HomeComponent implements OnInit {
     );
   }
 
+}
+
+@Component({
+  selector: 'confirm-delete-dialog',
+  templateUrl: './confirm-delete-dialog.html'
+})
+export class ConfirmDeleteDialog {
+  constructor(public dialogRef: MatDialogRef<ConfirmDeleteDialog>) {}
 }

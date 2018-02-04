@@ -9,5 +9,5 @@ import com.juniorro.apibackend.domain.Movie;
 
 
 public interface MovieRepo extends CrudRepository<Movie, Long>{
-	List<Movie> findByTitle(String title);
+	List<Movie> findByTitleContaining(String title);
 }

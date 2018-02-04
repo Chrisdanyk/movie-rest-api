@@ -50,10 +50,10 @@ public class MovieResource {
 	}
 
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public ResponseEntity removeMovie(@RequestBody String id) throws IOException {
-		String fileName = id + ".png";
-		Files.delete(Paths.get("src/main/resources/static/image/computer/" + fileName));
-		movieService.removeOne(Long.parseLong(id));
+	public ResponseEntity removeMovie(@RequestParam("movieId") Long movieId) throws IOException {
+		String fileName = movieId+".png";
+		Files.delete(Paths.get("src/main/resources/static/image/movie/" + fileName));
+		movieService.removeOne(movieId);
 		return new ResponseEntity("Remove Success!", HttpStatus.OK);
 	}
 
@@ -61,6 +61,13 @@ public class MovieResource {
 	public Movie getMovie(@PathVariable("id") Long id) {
 		Movie Movie = movieService.findOne(id);
 		return Movie;
+	}
+	
+	@RequestMapping(value = "/search", method=RequestMethod.GET)
+	public List<Movie> searchMovie(@RequestParam("title") String title) {
+		List<Movie> movieList =  movieService.searchByTitle(title);
+		System.out.println(movieList);
+		return movieList;
 	}
 
 	@RequestMapping(value = "/image", method = RequestMethod.POST)
@@ -93,7 +100,7 @@ public class MovieResource {
 			Iterator<String> it = multipartRequest.getFileNames();
 			MultipartFile multipartFile = multipartRequest.getFile(it.next());
 			String fileName = movieId+".png";
-			Files.delete(Paths.get("src/main/resources/static/image/movie/"+fileName));
+			//Files.delete(Paths.get("src/main/resources/static/image/movie/"+fileName));
 			byte[] bytes = multipartFile.getBytes();
 			BufferedOutputStream stream = new BufferedOutputStream(
 					new FileOutputStream(new File("src/main/resources/static/image/movie/"+fileName)));

@@ -1,47 +1,38 @@
+<br>
 <section id="main" style="margin-bottom: 20px;">
   <div class="container">
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
         <h1 class="my-4">Specifications</h1>
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            Title:
-            <span class="badge badge-primary badge-pill">{{movie.title}}</span>
+            <h5>Title:</h5>
+            <h6 class="">{{movie.title}}</h6>
           </li>
           <li class="list-group-item d-flex justify-content-between align-items-center">
-            Director:
-            <span class="badge badge-primary badge-pill">{{movie.director}}</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Genre:
-            <span class="badge badge-primary badge-pill">{{movie.genre}}</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Release Date:
-            <span class="badge badge-primary badge-pill">{{movie.releaseDate}}</span>
-          </li>
-         
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Market Price
-            <span class="badge badge-primary badge-pill">{{computer.listPrice}}</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Price
-            <span class="badge badge-primary badge-pill">{{computer.ourPrice}}</span>
-          </li>
-        </ul>
+              <h5>Director:</h5>
+              <h6 class="">{{movie.director}}</h6>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <h5>Genre:</h5>
+                <h6 class="">{{movie.genre}}</h6>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <h5>Realease:</h5>
+                  <h6 class="">{{movie.releaseDate | date:'fullDate'}}</h6>
+                </li>         
+         </ul>
       </div>
   
-      <div class="col-lg-9">
+      <div class="col-lg-8">
         <div style="margin-bottom:-40px;">
           <a type="button" class="btn btn-primary btn-sm" routerLink="/home">Back</a>
-          <button type="button" class="btn btn-primary btn-sm pull-right" (click)="onEditMovie(movie)">Edit</button>
-        </div>
+          <button type="button" class="btn btn-primary btn-sm float-right" (click)="onEditMovie(movie)">Edit</button>
+        </div><br>
         <div class="card mt-4">
-          <img class="card-img-top img-fluid" src="http://localhost:8180/image/computer/{{computer.id}}.png" alt="computer image">
+          <img class="card-img-top img-fluid" src="http://localhost:8000/image/movie/{{movie.id}}.png" alt="movie poster">
           <div class="card-body">
             <h3 class="card-title">{{movie.title}}</h3>
-            <h4>Budget: ${{computer.ourPrice}}</h4>
             <h3>Plot</h3>
             <p class="card-text">{{movie.plot}}</p>
           </div>

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /* stylelint-disable selector-list-comma-newline-after */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .blog-header {
     line-height: 1;
@@ -131,4 +132,7 @@
   .blog-footer p:last-child {
     margin-bottom: 0;
   }
+
+
+
   

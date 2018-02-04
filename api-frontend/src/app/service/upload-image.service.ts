@@ -17,7 +17,7 @@ export class UploadImageService {
 
   updateImage(movieId: number){
 	  if(this.filesToUpload.length>0){
-		this.makeFileRequest("http://localhost:8000/movie/update/image?movieId="+movieId, [], this.filesToUpload)
+		this.makeFileRequest("http://localhost:8000/movie/image?movieId="+movieId, [], this.filesToUpload)
 		.then((result) => {
 			  console.log(result);
 		  }, (error) => {

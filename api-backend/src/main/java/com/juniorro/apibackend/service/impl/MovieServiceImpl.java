@@ -29,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	public List<Movie> searchByTitle(String title) {
-		List<Movie> movies = movieRepo.findByTitle(title);
+		List<Movie> movies = movieRepo.findByTitleContaining(title);
 		return movies;
 	}
 
