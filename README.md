@@ -48,5 +48,5 @@ Run 'npm install' to install the node packages before starting the server with '
 
 # VISUAL
 
-![alt tag](https://github.com/juniorro/computer-store/blob/master/admincp-backend/snapshot1.PNG) </br>
-![alt tag](https://github.com/juniorro/bits-and-bytes/blob/master/visual1.PNG)
+![alt tag]() </br>
+![alt tag]()
