@@ -16,7 +16,9 @@ Movie REST API is an application that fetches movie information from API endpoin
 
 Java Compiler (JRE OR JDK) </br>
 NodeJs </br>
-Redis Server (external session storage). Redis for Windows can be downloaded here: https://github.com/rgl/redis/downloads </br>
+Redis Server (external session storage) </br>
+Redis for Windows can be downloaded here: https://github.com/rgl/redis/downloads </br>
+Start redis Server by navigating to the redis folder, and run command: redis-server redis.windows.conf </br>
 MySql database </br>
 
 
