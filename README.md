@@ -9,7 +9,7 @@
 
 # INTRODUCTION
 
-Movie REST API is an application that fetches movie information from API endpoints, built with Java, Spring Framework, Spring boot, and Angular. Features include complete CRUD operations on REST endpoints, database to store the resources, and a security layer for authentication.
+Movie REST API is an application that fetches movie information from API endpoints, built with Java, Spring Framework, Spring boot, and Angular, Angular Material, and Bootstrap. Features include complete CRUD operations on REST endpoints, database to store the resources, and a security layer for authentication.
 
 
 # REQUIREMENTS
