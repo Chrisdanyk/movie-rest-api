@@ -106,7 +106,6 @@ export class HomeComponent implements OnInit {
       res => {
         location.reload();
         this.router.navigate(['/login']);
-        
       },
       error => {
         console.log(error);

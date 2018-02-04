@@ -5,13 +5,11 @@ import { HttpModule } from '@angular/http';
 import { routing} from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AddMovieService } from './service/add-movie.service';
 import { UploadImageService } from './service/upload-image.service';
 import { HomeService } from './service/home.service';
 import { MovieDetailService } from './service/movie-detail.service';
 import { EditMovieService } from './service/edit-movie.service';
-
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
