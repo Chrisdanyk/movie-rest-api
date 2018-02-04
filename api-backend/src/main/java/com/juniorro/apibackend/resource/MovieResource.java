@@ -52,7 +52,10 @@ public class MovieResource {
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public ResponseEntity removeMovie(@RequestParam("movieId") Long movieId) throws IOException {
 		String fileName = movieId+".png";
-		Files.delete(Paths.get("src/main/resources/static/image/movie/" + fileName));
+		File file = new File("src/main/resources/static/image/movie/"+fileName);
+		 if(file.exists()){
+			 Files.delete(Paths.get("src/main/resources/static/image/movie/"+fileName));
+		 }
 		movieService.removeOne(movieId);
 		return new ResponseEntity("Remove Success!", HttpStatus.OK);
 	}
@@ -100,7 +103,10 @@ public class MovieResource {
 			Iterator<String> it = multipartRequest.getFileNames();
 			MultipartFile multipartFile = multipartRequest.getFile(it.next());
 			String fileName = movieId+".png";
-			//Files.delete(Paths.get("src/main/resources/static/image/movie/"+fileName));
+			File file = new File("src/main/resources/static/image/movie/"+fileName);
+			 if(file.exists()){
+				 Files.delete(Paths.get("src/main/resources/static/image/movie/"+fileName));
+			 }
 			byte[] bytes = multipartFile.getBytes();
 			BufferedOutputStream stream = new BufferedOutputStream(
 					new FileOutputStream(new File("src/main/resources/static/image/movie/"+fileName)));
