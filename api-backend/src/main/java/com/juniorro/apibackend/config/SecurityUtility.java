@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/*Security utility class to encode password before saving to database*/
+
 @Component
 public class SecurityUtility {
 	

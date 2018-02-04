@@ -27,6 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.juniorro.apibackend.domain.Movie;
 import com.juniorro.apibackend.service.MovieService;
 
+/*Movie resource class that handles requests and exposing endpoints*/
+
 @RestController
 @RequestMapping("/movie")
 public class MovieResource {

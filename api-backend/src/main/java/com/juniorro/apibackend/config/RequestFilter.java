@@ -12,6 +12,10 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/*This class is a configuration to enable CORS (Cross-Origin Resource Sharing)
+so that Angular can communicate with the back-end. It ensures that Preflight requests
+from  CORS protocol are understood*/
+
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RequestFilter implements Filter {

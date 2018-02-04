@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.juniorro.apibackend.service.UserService;
 
-
+/*Login resource class*/
 
 @RestController
 //@CrossOrigin(origins = "/**")

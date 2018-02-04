@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.juniorro.apibackend.domain.security.Authority;
 import com.juniorro.apibackend.domain.security.UserRole;
 
+/*User class that implements Spring UserDetails security class*/
+
 @Entity
 public class User implements UserDetails, Serializable {
 

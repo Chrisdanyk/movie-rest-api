@@ -12,6 +12,8 @@ import javax.persistence.Transient;
 
 import org.springframework.web.multipart.MultipartFile;
 
+/*Movie class, simple Java POJO*/
+
 @Entity
 public class Movie implements Serializable {
 

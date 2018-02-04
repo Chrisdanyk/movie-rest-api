@@ -14,7 +14,7 @@ import org.springframework.session.web.http.HttpSessionStrategy;
 
 import com.juniorro.apibackend.service.UserSecurityService;
 
-
+/*Spring Security config class*/
 
 @Configuration
 @EnableWebSecurity
