@@ -14,6 +14,7 @@ import { UploadImageService } from '../service/upload-image.service';
   styleUrls: ['./edit-movie.component.css']
 })
 export class EditMovieComponent implements OnInit {
+  private isLoggedin: boolean = false;
   private movieId: number;
   private movie: Movie = new Movie();
 
@@ -39,18 +40,37 @@ export class EditMovieComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.route.params.forEach((params: Params) => {
-      this.movieId = Number.parseInt(params['id']);
-    });
-    this.movieDetailService.getMovie(this.movieId).subscribe(
-      response => {
-        this.movie = response.json();
-        console.log(this.movie);
+    this.longinService.checkSession().subscribe(
+      res => {
+        this.isLoggedin = true;
+        this.route.params.forEach((params: Params) => {
+          this.movieId = Number.parseInt(params['id']);
+        });
+        this.movieDetailService.getMovie(this.movieId).subscribe(
+          response => {
+            this.movie = response.json();
+            console.log(this.movie);
+          },
+          error => {
+            console.log(error);
+          }
+        );
       },
       error => {
-        console.log(error);
+        this.isLoggedin = false;
+        this.router.navigate(['/']);
       }
     );
+
+
+
+
+
+
+
+
+
+    
   }
 
 }

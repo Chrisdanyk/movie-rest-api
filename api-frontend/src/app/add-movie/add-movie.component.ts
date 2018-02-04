@@ -13,14 +13,24 @@ import { UploadImageService } from '../service/upload-image.service';
 export class AddMovieComponent implements OnInit {
   private newMovie: Movie = new Movie();
   public isMovieAdded: boolean;
-  private isLoggedin = false;
+  private isLoggedin: boolean = false;
 
   constructor(private addMovieService: AddMovieService,
     private longinService: LoginService,
     private uploadImageService: UploadImageService,
     private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.longinService.checkSession().subscribe(
+      response => {
+        this.isLoggedin = true;
+      },
+      error => {
+        this.isLoggedin = false;
+        this.router.navigate(['/login']);
+      }
+    );
+  }
 
   onAddNewMovie() {
     this.addMovieService.saveMovie(this.newMovie).subscribe(

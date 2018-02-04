@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, NavigationExtras} from '@angular/router';
+import { Observable } from 'rxjs/Rx';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import { LoginService } from '../service/login.service';
 import { HomeService } from '../service/home.service';
@@ -12,6 +13,9 @@ import { DeleteMovieService } from '../service/delete-movie.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  private isLoggedin = false;
+  private dataLoaded: boolean = false;
+  private timer: any = 0;
   private movieList: Movie[];
   private selectedMovie: Movie;
   private title: string;
@@ -23,17 +27,33 @@ export class HomeComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    this.homeService.getMovieList().subscribe(
-      response => {
-        this.movieList = response.json();
-        console.log(this.movieList);
-        // this.timer = Observable.timer(1000);
-        // this.timer.subscribe(x => {this.dataLoaded = true;});
-      }, 
+    this.longinService.checkSession().subscribe(
+      res => {
+        this.isLoggedin = true;
+        this.homeService.getMovieList().subscribe(
+          response => {
+            this.timer = Observable.timer(1000);
+            this.timer.subscribe(x => {this.dataLoaded = true;});            
+            this.movieList = response.json();
+            console.log(this.movieList);
+            
+          }, 
+          error => {
+            console.log(error);
+          }
+          );
+      },
       error => {
-        console.log(error);
+        this.isLoggedin = false;
+        this.router.navigate(['/login']);
       }
-      );
+    );
+
+
+
+
+
+    
    }
 
    onSelect(movie: Movie){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Movie } from '../model/movie';
 import { MovieDetailService } from '../service/movie-detail.service';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -9,10 +10,12 @@ import { MovieDetailService } from '../service/movie-detail.service';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
+  private isLoggedin: boolean = false;
   private movie: Movie = new Movie();
   private movieId: number;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private longinService: LoginService,
+    private route: ActivatedRoute,
     private movieDetailsService: MovieDetailService,
     private router: Router) { }
 
@@ -21,6 +24,8 @@ export class MovieDetailComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.longinService.checkSession().subscribe(
+      res => {
     this.route.params.forEach((params: Params) => {
       this.movieId = Number.parseInt(params['id']);
     });
@@ -33,6 +38,10 @@ export class MovieDetailComponent implements OnInit {
         console.log(error);
       }
     );
+  },
+  error => {
+    this.isLoggedin = false;
+    this.router.navigate(['/']);
   }
 
 }
