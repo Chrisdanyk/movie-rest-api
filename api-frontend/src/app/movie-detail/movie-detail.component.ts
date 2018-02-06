@@ -17,7 +17,7 @@ export class MovieDetailComponent implements OnInit {
   constructor(private longinService: LoginService,
     private route: ActivatedRoute,
     private movieDetailsService: MovieDetailService,
-    private router: Router) { }
+    private router: Router) {}
 
     onEditMovie(movie: Movie){
       this.router.navigate(['movie/update', this.movie.id]);
@@ -42,6 +42,6 @@ export class MovieDetailComponent implements OnInit {
   error => {
     this.isLoggedin = false;
     this.router.navigate(['/']);
-  }
-
+  });
+}
 }
